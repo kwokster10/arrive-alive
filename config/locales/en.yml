@@ -1,0 +1,30 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+en:
+  not_allowed: "This page does not exist or you do not have access to this page."
+  float_plans:
+    new: "Create a Float Plan"
+    edit: "Edit %{@float_plan.name || Float Plan}"
+    info:
+      waivers: "Skippers, please make sure all guests have signed a waiver before they step onboard a sailboat.  Guests under 21 must have their waiver signed by a guardian."
+      pfds: "PFDs:  All sailors under 18 must wear a PFD at all times.  Everyone must wear a PFD when flying a spinnaker or if wind speed is above 15 knots."
+      contact: "Contact Jim Moore with any issues or questions at 475-441-3636, Jim@offshoresailing.com"

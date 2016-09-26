@@ -1,0 +1,41 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  start_time: 2016-09-25 17:40:30
+  arrival_time: 2016-09-25 17:40:30
+  start_location: MyString
+  arrival_location: MyString
+  boat_number: 1
+  email: MyString
+  phone_number: MyString
+  participants: 
+  direction_of_sail: MyString
+  current: MyString
+  had_vhf_radio: false
+  had_three_flares: false
+  had_throw_rope: false
+  had_checked_weather: false
+  in_emergency: false
+  state: 1
+  notes: MyText
+
+two:
+  name: MyString
+  start_time: 2016-09-25 17:40:30
+  arrival_time: 2016-09-25 17:40:30
+  start_location: MyString
+  arrival_location: MyString
+  boat_number: 1
+  email: MyString
+  phone_number: MyString
+  participants: 
+  direction_of_sail: MyString
+  current: MyString
+  had_vhf_radio: false
+  had_three_flares: false
+  had_throw_rope: false
+  had_checked_weather: false
+  in_emergency: false
+  state: 1
+  notes: MyText
