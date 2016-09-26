@@ -1,0 +1,12 @@
+.time-select {
+  display: flex;
+}
+.pad-top {
+  padding-top: 30px;
+  @media screen and (max-width: 1021px) {
+    padding-top: 0;
+  }
+}
+.margin-left {
+  margin-left: 20px !important;
+}

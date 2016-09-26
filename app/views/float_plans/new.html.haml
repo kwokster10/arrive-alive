@@ -1,0 +1,94 @@
+.info-all
+  %ul
+    -t('float_plans.info').each do |key, value|
+      %li{class: "info-#{key}"}
+        =value
+
+=form_for @float_plan do |f|
+  .row
+    .large-12.columns
+      %label
+        Name
+        =f.text_field :name, placeholder: 'What would you like to call this float plan?'
+  .row
+    .large-6.columns
+      %label
+        Email
+        =f.text_field :email, placeholder: 'primary_contact@example.com'
+    .large-6.columns
+      %label
+        Phone Number
+        =f.text_field :phone_number, placeholder: '555-555-5555'
+  .row
+    .large-4.columns
+      %label
+        Start Location
+        =select_tag :start_location, options_for_select(FloatPlan::LOCATIONS)
+    .large-4.columns
+      %label
+        Arrival Location
+        =select_tag :arrival_location, options_for_select(FloatPlan::LOCATIONS)
+    .large-4.columns
+      %label
+        Boat Number
+        =select_tag :boat_number, options_for_select(FloatPlan::BOAT_NUMBERS)
+  .row
+    .large-6.columns
+      %label
+        Start Time
+      .time-select
+        =f.time_select :start_time, minute_step: 30, selected: @float_plan.start_time, ampm: true
+    .large-6.columns
+      %label
+        Arrival Time
+      .time-select
+        =f.time_select :arrival_time, minute_step: 30, selected: @float_plan.arrival_time, ampm: true
+  .row
+    .large-6.columns
+      %label
+        What is the current like?
+        =f.label :current_ebb do
+          =f.radio_button :current, 'ebb'
+          Ebb
+        =f.label :current_flood do
+          =f.radio_button :current, 'flood'
+          Flood
+    .large-6.columns
+      %label
+        Did you bring/complete the following?
+        =f.label :had_vhf_radio do
+          =f.check_box :had_vhf_radio
+          VHF Radio
+        =f.label :had_three_flares do
+          =f.check_box :had_three_flares
+          Three Flares
+        =f.label :had_throw_rope do
+          =f.check_box :had_throw_rope
+          Throw Rope
+        =f.label :had_checked_weather do
+          =f.check_box :had_checked_weather
+          Checked Weather
+  .row
+    .large-12.columns
+      %label
+        Direction of Sail
+        =f.text_field :direction_of_sail
+  .row
+    .large-12.columns
+      Participants
+      (maximum of 6 with 1 required club member and of course, you, the skipper)
+      =f.fields_for :participants do |part|
+        -6.times do |index|
+          .row
+            .large-6.columns
+              =part.label :name, "Participant # #{index + 1}"
+              =part.text_field :name
+            .large-6.columns.pad-top
+              =part.label :is_member do
+                =part.radio_button :is_member, true
+                Member
+                =part.radio_button :is_member, false, class: 'margin-left'
+                Guest
+
+-#TODO: pre-fill first input to skipper
+-#TODO: add logic for when guest is clicked, alert or add checkbox about waiver
