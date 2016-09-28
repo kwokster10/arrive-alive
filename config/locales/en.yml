@@ -23,8 +23,14 @@ en:
   not_allowed: "This page does not exist or you do not have access to this page."
   float_plans:
     new: "Create a Float Plan"
-    edit: "Edit %{@float_plan.name || Float Plan}"
+    index: "All Float Plans"
+    edit: "Edit %{float_plan_name}"
+    show: "%{float_plan_name}"
     info:
       waivers: "Skippers, please make sure all guests have signed a waiver before they step onboard a sailboat.  Guests under 21 must have their waiver signed by a guardian."
       pfds: "PFDs:  All sailors under 18 must wear a PFD at all times.  Everyone must wear a PFD when flying a spinnaker or if wind speed is above 15 knots."
       contact: "Contact Jim Moore with any issues or questions at 475-441-3636, Jim@offshoresailing.com"
+  users:
+    edit: "Editing Profile"
+    index: "All Skippers"
+    show: "Profile"

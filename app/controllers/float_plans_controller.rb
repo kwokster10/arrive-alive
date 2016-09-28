@@ -2,8 +2,8 @@ class FloatPlansController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    #TODO: scope to a user
-    @float_plans = FloatPlan.all
+    @title = t('float_plans.index')
+    @float_plans = policy_scope(FloatPlan)
   end
 
   def new
@@ -14,16 +14,30 @@ class FloatPlansController < ApplicationController
       state: 0)
   end
 
+  def show
+    @float_plan = FloatPlan.find(params[:id])
+    authorize @float_plan
+    @title = t('float_plans.show', float_plan_name: @float_plan.name)
+  end
+
   def create
-    @float_plan = FloatPlan.create()
+    @float_plan = FloatPlan.create(create_params)
   end
 
-  private
-  def new_params
-    params.require(:float_plan).permit(:name, :start_time, :arrival_time, :start_location, :arrival_location, :boat_number, :email, :phone_number, :participants, :direction_of_sail, :current, :had_vhf_radio, :had_three_flares, :had_throw_rope, :had_checked_weather, :state)
+  def edit
+    @float_plan = FloatPlan.find(params[:id])
+    authorize @float_plan
+    @title = t('float_plans.edit', float_plan_name: @float_plan.name)
   end
 
-  def update_status_params
-    params.require(:float_plan).permit(:status)
+  def update
+    binding.pry
+    @float_plan = FloatPlan.find(params[:id])
+    authorize @float_plan
+    if @float_plan.update_attributes(permitted_attributes(@float_plan))
+      redirect_to @float_plan
+    else
+      render :index, :alert => t('not_allowed')
+    end
   end
 end

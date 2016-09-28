@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160925214030) do
+ActiveRecord::Schema.define(version: 20160928003132) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,14 +32,15 @@ ActiveRecord::Schema.define(version: 20160925214030) do
     t.boolean  "had_three_flares"
     t.boolean  "had_throw_rope"
     t.boolean  "had_checked_weather"
-    t.boolean  "in_emergency",        default: false
     t.integer  "state",               default: 0
     t.text     "notes"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.integer  "user_id"
   end
 
   add_index "float_plans", ["state"], name: "index_float_plans_on_state", using: :btree
+  add_index "float_plans", ["user_id"], name: "index_float_plans_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
@@ -63,6 +64,8 @@ ActiveRecord::Schema.define(version: 20160925214030) do
     t.string   "invited_by_type"
     t.integer  "invitations_count",      default: 0
     t.boolean  "admin",                  default: false
+    t.string   "name",                   default: "",    null: false
+    t.string   "phone_number",           default: "",    null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

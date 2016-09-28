@@ -1,0 +1,87 @@
+.row
+  .large-6.small-6.columns
+    =button_helper(@float_plan, 'Help!', 'full-width')
+  .large-6.small-6.columns
+    =button_helper(@float_plan, 'Arrived', 'full-width')
+
+%table.view-table
+  %thead
+  %tbody
+    %tr
+      %td Created On
+      %td
+        =@float_plan.created_at.strftime('%m/%d/%y')
+    %tr
+      %td Last Updated
+      %td
+        =@float_plan.updated_at.strftime('%l:%M %p')
+    %tr
+      %td State
+      %td{class: "#{@float_plan.state} text-center"}
+        =@float_plan.state
+    %tr
+      %td Start Time
+      %td
+        =@float_plan.start_time.strftime('%l:%M %p')
+    %tr
+      %td Arrival Time
+      %td
+        =@float_plan.arrival_time.strftime('%l:%M %p')
+    %tr
+      %td Participants
+      %td
+        %ol
+          -@float_plan.participants.each do |p|
+            %li
+              ="#{p['name']} - "
+              =p['is_member'] ? 'Member' : 'Guest'
+    %tr
+      %td Contact Info
+      %td
+        %ul
+          %li
+            =@float_plan.email
+          %li
+            =@float_plan.phone_number
+    %tr
+      %td Boat #
+      %td
+        =@float_plan.boat_number
+    %tr
+      %td Direction of Sail
+      %td
+        =@float_plan.direction_of_sail
+    %tr
+      %td Start Location
+      %td
+        =@float_plan.start_location
+    %tr
+      %td End Location
+      %td
+        =@float_plan.arrival_location
+    %tr
+      %td Current
+      %td
+        =@float_plan.current
+    %tr
+      %td Other
+      %td
+        %ul
+          %li
+            =yes_or_no(@float_plan, 'had_checked_weather')
+          %li
+            =yes_or_no(@float_plan, 'had_vhf_radio')
+          %li
+            =yes_or_no(@float_plan, 'had_three_flares')
+          %li
+            =yes_or_no(@float_plan, 'had_throw_rope')
+    %tr
+      %td Notes
+      %td
+        =@float_plan.notes
+    %tr
+      %td Edit
+      %td
+        =link_to 'Edit', edit_float_plan_path(@float_plan)
+
+=button_helper(@float_plan, 'Cancel', 'full-width')

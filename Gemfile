@@ -29,6 +29,9 @@ gem 'devise_invitable', '~> 1.7.0'
 # Using Foundation front-end framework. Read more: https://github.com/zurb/foundation-rails
 gem 'foundation-rails', '~> 6.2.3.0'
 
+# Use Pundit for user authorization. Read more: https://github.com/elabs/pundit
+gem 'pundit'
+
 # Adding Haml temple engine. Read more: https://github.com/haml/haml
 gem 'haml', '~> 4.0.5'
 

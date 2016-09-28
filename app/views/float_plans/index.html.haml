@@ -1,0 +1,31 @@
+%table
+  %thead
+    %tr
+      %th Created On
+      %th Name
+      %th Participants
+      %th State
+      %th Last Updated
+      %th
+      %th
+  %tbody
+    -@float_plans.each do |fp|
+      %tr
+        %td
+          =fp.created_at.strftime('%m/%d/%y')
+        %td
+          =fp.name
+        %td
+          %ol
+            -fp.participants.each do |p|
+              %li
+                ="#{p['name']} - "
+                =p['is_member'] ? 'Member' : 'Guest'
+        %td{class: "#{fp.state} text-center"}
+          =fp.state
+        %td
+          =fp.updated_at.strftime('%l:%M %p')
+        %td
+          =link_to 'View', float_plan_path(fp)
+        %td
+          =link_to 'Edit', edit_float_plan_path(fp)

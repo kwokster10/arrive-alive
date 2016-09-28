@@ -1,0 +1,16 @@
+-existing_count = float_plan.participants.count
+=f.fields_for :participants do |part|
+  -float_plan.participants.each_with_index do |p, index|
+    .row
+      .large-6.columns
+        =part.label :name, "Participant # #{index + 1}"
+        =part.text_field :name, value: p['name']
+      .large-6.columns.pad-top
+        -is_member = p['is_member'] == true
+        =part.label :is_member do
+          =part.radio_button "is_member_#{index}".to_sym, true, checked: is_member
+          Member
+          =part.radio_button :"is_member_#{index}".to_sym, false, checked: !is_member, class: 'margin-left'
+          Guest
+-if !(existing_count > 6)
+  =render 'new_participants', count: 6 - existing_count, f: f

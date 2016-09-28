@@ -1,0 +1,15 @@
+.view-table {
+  tbody > tr > td:first-child {
+    font-weight: bold;
+
+    &:after {
+      content: ":";
+    }
+  }
+}
+
+.full-width {
+  width: 100%;
+  text-transform: uppercase;
+  font-weight: bold;
+}
