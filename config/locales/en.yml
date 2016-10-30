@@ -21,16 +21,31 @@
 
 en:
   not_allowed: "This page does not exist or you do not have access to this page."
+  not_logged_in: "You must be logged in to see this page."
+  phone_number_error: "must be in ###-###-#### format"
   float_plans:
     new: "Create a Float Plan"
+    new_label: "Create new from existing float plan (or leave blank to create from scratch):"
+    create_confirmation: "Once submitted, float plan can NOT be edited.\r\rAre you sure you're ready to submit?"
     index: "All Float Plans"
     edit: "Edit %{float_plan_name}"
     show: "%{float_plan_name}"
+    success: "Please report any damage or any missing gear to %{<%= ENV['ADMIN1_NAME'] %>}. You can send photos or additional information to %{<%= ENV['ADMIN1_EMAIL'] %>}. Use the Boat # as the subject for the email.\r\rThank you for helping us keep the fleet ship shape!"
+    secondary: "Are you sure you would like to cancel this float plan?"
+    alert: "Contact the U.S. Coast Guard on VHF Channel 16 immediately if thi is a life-threatening emergency.\r\rOtherwise, contact the club on VHF Channel 69. If you cannot reach us on the radio, call %{<%= ENV['ADMIN1_NAME'] %>} at %{<%= ENV['ADMIN1_PHONE'] %>}, or %{<%= ENV['ADMIN2_NAME'] %>} at %{<%= ENV['ADMIN2_PHONE'] %>}."
     info:
       waivers: "Skippers, please make sure all guests have signed a waiver before they step onboard a sailboat.  Guests under 21 must have their waiver signed by a guardian."
       pfds: "PFDs:  All sailors under 18 must wear a PFD at all times.  Everyone must wear a PFD when flying a spinnaker or if wind speed is above 15 knots."
-      contact: "Contact Jim Moore with any issues or questions at 475-441-3636, Jim@offshoresailing.com"
+      contact: "Contact %{<%= ENV['ADMIN1_NAME'] %>} with any issues or questions at %{<%= ENV['ADMIN1_PHONE'] %>}, %{<%= ENV['ADMIN1_EMAIL'] %>}"
+    errors:
+      current: "must be an ebb or flood"
+      locations: "must be leaving and returning from North Cove or LLM"
+      arrival_location: "must equal the start location"
+      participants: "must have at least two club members on the boat"
   users:
-    edit: "Editing Profile"
+    edit: "Editing %{user_name}'s Profile"
     index: "All Skippers"
-    show: "Profile"
+    show: "%{user_name}'s Profile"
+    delete:
+      confirmation: "Are you sure you want to delete %{user_name}"
+    to_admin: "Are you sure you want to give %{user_name} admin rights?"
