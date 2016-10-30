@@ -1,0 +1,17 @@
+%nav.menu.top-bar
+  %div.menu-text
+    =image_tag('logo_with_title')
+    %section.top-bar-section
+      - if !current_user
+        .right
+          =link_to 'Sign In', new_user_session_path
+      - else
+        -if current_user.admin?
+          .right
+            =link_to 'Users', users_path, class: "#{'active' if current_page?(users_path)}"
+        .right
+          =link_to 'Float Plans', float_plans_path, class: "#{'active' if current_page?(float_plans_path)}"
+        .right
+          =link_to 'My Profile', user_path(current_user.id), class: "#{'active' if current_page?(user_path(current_user.id))}"
+        .right
+          =link_to 'Sign Out', destroy_user_session_path, method: :delete

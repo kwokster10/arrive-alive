@@ -1,0 +1,36 @@
+.menu.top-bar {
+  background-color: black;
+
+  img {
+    width: 85px;
+    margin: -15px;
+    margin-left: 15px;
+  }
+
+  .top-bar-section {
+    display: inline-flex;
+    float: right;
+    margin-top: 20px;
+
+    @media screen and (max-width: 545px) {
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+
+    .right {
+      padding-right: 20px;
+
+      @media screen and (max-width: 768px) {
+        margin-top: 10px;
+      }
+
+      a.active {
+        padding: 5px 10px;
+
+        @media screen and (min-width: 768px) {
+          background-color: lighten(#2199E8, 30%);
+        }
+      }
+    }
+  }
+}

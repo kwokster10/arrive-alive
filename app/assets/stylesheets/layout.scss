@@ -1,0 +1,18 @@
+.main-container {
+  @media screen and (max-width: 768px) {
+    margin: 0 10px;
+  }
+}
+
+.actions {
+  input[type="submit"] {
+    vertical-align: middle;
+    border: 1px solid transparent;
+    border-radius: 0;
+    padding: 0.85em 1em;
+    margin: 0 0 1rem 0;
+    font-size: 0.9rem;
+    background-color: #2199E8;
+    color: #FEFEFE;
+  }
+}
