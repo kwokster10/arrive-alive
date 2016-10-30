@@ -28,13 +28,20 @@
   </head>
 
   <body>
-    <div class="row">
+    <%= render 'layouts/navigation' %>
+
+    <div class="row main-container">
       <h3><%= @title || '' %></h3>
       <% if notice %>
-          <p class="notice"><%= notice %></p>
+          <div class="callout primary">
+            <%= notice %>
+          </div>
       <% end %>
+
       <% if alert %>
-          <p class="alert"><%= alert %></p>
+          <div class="callout warning">
+            <%= alert %>
+          </div>
       <% end %>
 
       <%= yield %>

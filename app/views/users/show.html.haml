@@ -1,0 +1,32 @@
+-if current_user.admin?
+  =admin_button_helper(@user)
+
+%table.view-table
+  %thead
+  %tbody
+    %tr
+      %td Joined
+      %td
+        =@user.invitation_accepted_at.try(:strftime, '%m/%d/%y')
+    %tr
+      %td Name
+      %td
+        =@user.name
+    %tr
+      %td Contact Info
+      %td
+        %ul
+          %li
+            Email:
+            =@user.email
+          %li
+            Phone
+            =@user.phone_number
+    %tr
+      %td
+      %td
+        =link_to 'Change Password', edit_user_registration_path, class: 'hollow button'
+    %tr
+      %td
+      %td
+        =link_to 'Edit', edit_user_path(@user), class: 'hollow button'

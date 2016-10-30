@@ -1,0 +1,19 @@
+=form_for @user do |f|
+  .row
+    .large-12.columns
+      %label
+        Name
+        %small *Please enter your full name.*
+        =f.text_field :name, placeholder: 'Johnny Appleseed'
+  .row
+    .large-6.columns
+      %label
+        Email
+        =f.text_field :email, placeholder: 'your_email@domain.com'
+    .large-6.columns
+      %label
+        Phone Number
+        =f.text_field :phone_number, placeholder: '555-555-5555'
+  .row
+    .large-12.columns
+      =f.submit 'Update', class: 'button'

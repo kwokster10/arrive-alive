@@ -6,5 +6,11 @@ class User < ActiveRecord::Base
 
   include DeviseInvitable::Inviter
 
-  has_many :float_plans
+  has_many :float_plans, dependent: :destroy
+
+  validates :phone_number, format: { with: /\d{3}-\d{3}-\d{4}/, message: I18n.t('phone_number_error') }
+
+  def owner_of?(record)
+    id == record.user_id
+  end
 end

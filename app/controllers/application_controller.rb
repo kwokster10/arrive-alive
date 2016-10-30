@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   protected
+
   def authenticate_inviter!
     unless current_user.try(:admin?)
       redirect_to root_url, :alert => t('not_allowed')

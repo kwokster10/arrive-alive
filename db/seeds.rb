@@ -21,10 +21,12 @@ FloatPlan.create(
       participants: [
         {
           name: 'Member',
-          is_member: true},
+          is_member: true
+        },
         {
           name: 'Guest',
-          is_member: false}
+          is_member: false
+        }
       ].to_json,
       direction_of_sail: 'North',
       current: 'ebb',
