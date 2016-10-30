@@ -11,25 +11,25 @@ class FloatPlanPolicy < ApplicationPolicy
       if user.admin?
         scope.all
       else
-        scope.where(user_id: user.id)
+        user.float_plans
       end
     end
   end
 
-  def index?
-
+  def new?
+    user.admin? || user.owner_of?(record) || record.new_record?
   end
 
   def update?
-    user.admin? || (user.owner_of?(post) && (post.state == 0 || post.state == 3))
+    user.admin? || (user.owner_of?(record) && (record.started? || record.distressed?))
   end
 
   def edit?
-    user.admin? || (user.owner_of?(post) && (post.state == 0 || post.state == 3))
+    user.admin?
   end
 
   def all_attributes_except_notes
-    [:name, :start_time, :arrival_time, :start_location, :arrival_location, :boat_number, :email, :phone_number, :participants, :direction_of_sail, :current, :had_vhf_radio, :had_three_flares, :had_throw_rope, :had_checked_weather, :state]
+    [:name, :start_time, :arrival_time, :start_location, :arrival_location, :boat_number, :email, :phone_number, :direction_of_sail, :current, :had_vhf_radio, :had_three_flares, :had_throw_rope, :had_checked_weather, :user_id]
   end
 
   def permitted_attributes_for_create
@@ -39,7 +39,7 @@ class FloatPlanPolicy < ApplicationPolicy
   def permitted_attributes_for_update
     if user.admin?
       permitted_attributes_for_create
-    elsif user.owner_of?(post)
+    elsif user.owner_of?(record)
       [:state, :notes]
     end
   end

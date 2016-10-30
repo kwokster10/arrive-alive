@@ -1,12 +1,13 @@
-=f.fields_for :participants do |part|
-  -count.times do |index|
+-count.times do |index|
+  -starting_index = 6 - count
+  =f.fields_for "participants[#{index + starting_index}]" do |part|
     .row
       .large-6.columns
-        =part.label :name, "Participant # #{index + 1}"
-        =part.text_field :name
+        =part.label 'name', "Participant # #{index + starting_index + 1}"
+        =part.text_field 'name'
       .large-6.columns.pad-top
-        =part.label :is_member do
-          =part.radio_button :is_member, true
+        =part.label 'is_member' do
+          =part.radio_button  'is_member', true
           Member
-          =part.radio_button :is_member, false, class: 'margin-left'
+          =part.radio_button  'is_member', false, class: 'margin-left'
           Guest

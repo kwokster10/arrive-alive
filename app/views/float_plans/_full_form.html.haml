@@ -1,4 +1,5 @@
 =form_for @float_plan do |f|
+  =f.hidden_field :user_id
   .row
     .large-12.columns
       %label
@@ -18,15 +19,15 @@
     .large-4.columns
       %label
         Start Location
-        =select_tag :start_location, options_for_select(FloatPlan::LOCATIONS)
+        =f.select :start_location, options_for_select(FloatPlan::LOCATIONS, @float_plan.start_location)
     .large-4.columns
       %label
         Arrival Location
-        =select_tag :arrival_location, options_for_select(FloatPlan::LOCATIONS)
+        =f.select :arrival_location, options_for_select(FloatPlan::LOCATIONS, @float_plan.arrival_location)
     .large-4.columns
       %label
         Boat Number
-        =select_tag :boat_number, options_for_select(FloatPlan::BOAT_NUMBERS)
+        =f.select :boat_number, options_for_select(FloatPlan::BOAT_NUMBERS, @float_plan.boat_number)
   .row
     .large-6.columns
       %label
@@ -41,7 +42,10 @@
   .row
     .large-6.columns
       %label
-        What is the current like?
+        What is the current like (
+        %a{href: 'http://www.aroundtheharbor.com/nav/navigation_information.html', target: '_blank'}
+          consult the almanac
+        )?
         =f.label :current_ebb do
           =f.radio_button :current, 'ebb'
           Ebb
@@ -50,19 +54,21 @@
           Flood
     .large-6.columns
       %label
-        Did you bring/complete the following?
+        You must bring or have completed all of the following before departing:
         =f.label :had_vhf_radio do
-          =f.check_box :had_vhf_radio
+          =f.check_box :had_vhf_radio, required: true
           VHF Radio
         =f.label :had_three_flares do
-          =f.check_box :had_three_flares
+          =f.check_box :had_three_flares, required: true
           Three Flares
         =f.label :had_throw_rope do
-          =f.check_box :had_throw_rope
+          =f.check_box :had_throw_rope, required: true
           Throw Rope
         =f.label :had_checked_weather do
-          =f.check_box :had_checked_weather
-          Checked Weather
+          =f.check_box :had_checked_weather, required: true
+          Checked
+          %a{href: 'http://forecast.weather.gov/MapClick.php?lat=40.71&lon=-73.98#.V-hP4jUw9Do', target: '_blank'}
+            Current Weather
   .row
     .large-12.columns
       %label
@@ -72,4 +78,8 @@
     .large-12.columns
       Participants
       (maximum of 6 with 1 required club member and of course, you, the skipper)
-      =action_name == 'new' ? (render 'new_participants', f: f, count: 6) : (render 'existing_participants', float_plan: @float_plan, f: f)
+      =@float_plan.participants.blank? ? (render 'new_participants', f: f, count: 6) : (render 'existing_participants', float_plan: @float_plan, f: f)
+
+  .row
+    .large-12.columns
+      =save_button_helper(f)

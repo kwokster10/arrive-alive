@@ -1,0 +1,11 @@
+=form_for @float_plan do |f|
+  .row
+    .large-12.columns
+      %label
+        Subject
+        =text_field_tag :boat_number, f.boat_number
+  .row
+    .large-12.columns
+      %label
+        Body
+        =f.text_field :notes, placeholder: 'What damage or missing gear would you like to report?'

@@ -1,10 +1,6 @@
 .view-table {
   tbody > tr > td:first-child {
     font-weight: bold;
-
-    &:after {
-      content: ":";
-    }
   }
 }
 

@@ -1,31 +1,43 @@
-%table
-  %thead
-    %tr
-      %th Created On
-      %th Name
-      %th Participants
-      %th State
-      %th Last Updated
-      %th
-      %th
-  %tbody
-    -@float_plans.each do |fp|
-      %tr
-        %td
-          =fp.created_at.strftime('%m/%d/%y')
-        %td
-          =fp.name
-        %td
-          %ol
-            -fp.participants.each do |p|
-              %li
-                ="#{p['name']} - "
-                =p['is_member'] ? 'Member' : 'Guest'
-        %td{class: "#{fp.state} text-center"}
-          =fp.state
-        %td
-          =fp.updated_at.strftime('%l:%M %p')
-        %td
-          =link_to 'View', float_plan_path(fp)
-        %td
-          =link_to 'Edit', edit_float_plan_path(fp)
+=form_tag(new_float_plan_path, method: 'get') do
+  =label_tag :query, t('float_plans.new_label')
+  .row
+    .large-8.small-8.columns
+      =select_tag :query, options_from_collection_for_select(@float_plans, 'id', 'name'), include_blank: true
+    .small-4.large-4.columns
+      =submit_tag 'Create', class: 'button'
+-#TODO: Add tabs to see started/distressed in one tab, and all in another
+.row
+  .large-12.small-12.columns
+    %table
+      %thead
+        %tr
+          %th.hide-for-small-only Created On
+          %th Boat #
+          %th Participants
+          %th State
+          %th.hide-for-small-only Last Updated
+          %th
+          -if current_user.admin?
+            %th.hide-for-small-only
+      %tbody
+        -@float_plans.each do |fp|
+          %tr
+            %td.hide-for-small-only
+              =fp.created_at.strftime('%m/%d/%y')
+            %td
+              =fp.boat_number
+            %td
+              %ol
+                -fp.participants.try(:each) do |p|
+                  %li
+                    ="#{p['name']} - "
+                    =p['is_member'] ? 'Member' : 'Guest'
+            %td{class: "#{fp.state} text-center"}
+              =fp.state
+            %td.hide-for-small-only
+              =fp.updated_at.strftime('%l:%M %p')
+            %td.center
+              =link_to 'View', float_plan_path(fp), class: 'hollow button'
+            -if current_user.admin?
+              %td.hide-for-small-only.center
+                =link_to 'Edit', edit_float_plan_path(fp), class: 'hollow button'

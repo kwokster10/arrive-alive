@@ -1,8 +1,10 @@
 .row
-  .large-6.small-6.columns
-    =button_helper(@float_plan, 'Help!', 'full-width')
-  .large-6.small-6.columns
-    =button_helper(@float_plan, 'Arrived', 'full-width')
+  - if @float_plan.started?
+    .large-6.small-6.columns
+      =state_button_helper(@float_plan, 'Help!')
+  - if @float_plan.started? || @float_plan.distressed?
+    .large-6.small-6.columns
+      =state_button_helper(@float_plan, 'Arrived')
 
 %table.view-table
   %thead
@@ -31,7 +33,7 @@
       %td Participants
       %td
         %ol
-          -@float_plan.participants.each do |p|
+          -@float_plan.participants.try(:each) do |p|
             %li
               ="#{p['name']} - "
               =p['is_member'] ? 'Member' : 'Guest'
@@ -75,13 +77,11 @@
             =yes_or_no(@float_plan, 'had_three_flares')
           %li
             =yes_or_no(@float_plan, 'had_throw_rope')
-    %tr
-      %td Notes
-      %td
-        =@float_plan.notes
-    %tr
-      %td Edit
-      %td
-        =link_to 'Edit', edit_float_plan_path(@float_plan)
+    - if current_user.admin?
+      %tr
+        %td Edit
+        %td
+          =link_to 'Edit', edit_float_plan_path(@float_plan), class: 'hollow button'
 
-=button_helper(@float_plan, 'Cancel', 'full-width')
+- if @float_plan.started?
+  =state_button_helper(@float_plan, 'Cancel')
