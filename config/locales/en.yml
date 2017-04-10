@@ -34,7 +34,7 @@ en:
     secondary: "Are you sure you would like to cancel this float plan?"
     alert: "Contact the U.S. Coast Guard on VHF Channel 16 immediately if thi is a life-threatening emergency.\r\rOtherwise, contact the club on VHF Channel 69. If you cannot reach us on the radio, call %{<%= ENV['ADMIN1_NAME'] %>} at %{<%= ENV['ADMIN1_PHONE'] %>}, or %{<%= ENV['ADMIN2_NAME'] %>} at %{<%= ENV['ADMIN2_PHONE'] %>}."
     info:
-      waivers: "Skippers, please make sure all guests have signed a waiver before they step onboard a sailboat.  Guests under 21 must have their waiver signed by a guardian."
+      waivers: "Skippers, please make sure all guests have signed a waiver before they step aboard a sailboat.  Guests under 21 must have their waiver signed by a guardian."
       pfds: "PFDs:  All sailors under 18 must wear a PFD at all times.  Everyone must wear a PFD when flying a spinnaker or if wind speed is above 15 knots."
       contact: "Contact %{<%= ENV['ADMIN1_NAME'] %>} with any issues or questions at %{<%= ENV['ADMIN1_PHONE'] %>}, %{<%= ENV['ADMIN1_EMAIL'] %>}"
     errors:
