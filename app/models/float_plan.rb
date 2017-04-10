@@ -16,8 +16,6 @@ class FloatPlan < ActiveRecord::Base
   before_validation :format_participants
   before_create :append_date_to_name
 
-  # FloatPlan.where(state: :started)
-
   private
 
   def check_start_end_locations
