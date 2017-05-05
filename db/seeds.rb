@@ -2,9 +2,9 @@
 admin = User.create(email: 'admin@arrive-alive.com', password: 'password', password_confirmation: 'password', admin: true, name: 'Admin', phone_number: '555-555-5555')
 
 # Create a couple of non-admin user
-skipper = User.create(email: 'skipper@arrive-alive.com', password: 'password', password_confirmation: 'password', admin: true, name: 'Skipper', phone_number: '555-555-5555')
+skipper = User.create(email: 'skipper@arrive-alive.com', password: 'password', password_confirmation: 'password', admin: false, name: 'Skipper', phone_number: '555-555-5555')
 
-guppy = User.create(email: 'guppy@arrive-alive.com', password: 'password', password_confirmation: 'password', admin: true, name: 'Guppy', phone_number: '555-555-5555')
+guppy = User.create(email: 'guppy@arrive-alive.com', password: 'password', password_confirmation: 'password', admin: false, name: 'Guppy', phone_number: '555-555-5555')
 
 # Creates a couple float plans
 FloatPlan.create(

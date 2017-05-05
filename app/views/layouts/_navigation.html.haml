@@ -1,17 +1,21 @@
-%nav.menu.top-bar
-  %div.menu-text
-    =image_tag('logo_with_title')
-    %section.top-bar-section
-      - if !current_user
-        .right
-          =link_to 'Sign In', new_user_session_path
-      - else
-        -if current_user.admin?
-          .right
-            =link_to 'Users', users_path, class: "#{'active' if current_page?(users_path)}"
-        .right
-          =link_to 'Float Plans', float_plans_path, class: "#{'active' if current_page?(float_plans_path)}"
-        .right
-          =link_to 'My Profile', user_path(current_user.id), class: "#{'active' if current_page?(user_path(current_user.id))}"
-        .right
-          =link_to 'Sign Out', destroy_user_session_path, method: :delete
+.title-bar{ data: { hide_for: 'medium', responsive_toggle: 'nav-menu' } }
+  .title-bar-title
+    =image_tag('logo.png')
+  .title-bar-right
+    %button.menu-icon{ data: {toggle: ''}, type: 'button' }
+#nav-menu.top-bar{class: "#{'admin' if current_user.admin?}"}
+  .top-bar-left
+    %ul.menu{ data: { hide_for: 'medium'}}
+      %li
+        =image_tag('logo.png')
+  .top-bar-right
+    %ul.menu.dropdown.vertical.medium-horizontal
+      -if current_user.admin?
+        %li
+          =link_to 'Users', users_path, class: "#{'active' if current_page?(users_path)}"
+      %li
+        =link_to 'Float Plans', float_plans_path, class: "#{'active' if current_page?(float_plans_path)}"
+      %li
+        =link_to 'My Profile', user_path(current_user.id), class: "#{'active' if current_page?(user_path(current_user.id))}"
+      %li
+        =link_to 'Sign Out', destroy_user_session_path, method: :delete

@@ -1,6 +1,8 @@
 .main-container {
+  margin-top: 20px;
+
   @media screen and (max-width: 768px) {
-    margin: 0 10px;
+    margin: 20px 10px;
   }
 }
 
@@ -15,4 +17,8 @@
     background-color: #2199E8;
     color: #FEFEFE;
   }
+}
+
+.bold {
+  font-weight: 700;
 }

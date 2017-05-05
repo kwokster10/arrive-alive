@@ -27,10 +27,12 @@
     </script>
   </head>
 
-  <body>
-    <%= render 'layouts/navigation' %>
+  <body class="<%= current_page?(new_user_session_path) ? 'sign-in-body' : '' %>">
+    <% unless current_page?(new_user_session_path) %>
+      <%= render 'layouts/navigation' %>
+    <% end %>
 
-    <div class="row main-container">
+    <div class="<%= current_page?(new_user_session_path) ? 'sign-in-page' : 'row' %> main-container">
       <h3><%= @title || '' %></h3>
       <% if notice %>
           <div class="callout primary">

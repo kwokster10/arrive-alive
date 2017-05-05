@@ -59,6 +59,7 @@ class FloatPlansController < ApplicationController
       start_time: Time.now,
       arrival_time: Time.now + 4.hours,
       state: 0,
+      name: current_user.name + DateTime.now.strftime('%m/%d/%Y'),
       email: current_user.email,
       phone_number: current_user.phone_number,
       user_id: current_user.id,

@@ -18,14 +18,6 @@
   .row
     .large-4.columns
       %label
-        Start Location
-        =f.select :start_location, options_for_select(FloatPlan::LOCATIONS, @float_plan.start_location)
-    .large-4.columns
-      %label
-        Arrival Location
-        =f.select :arrival_location, options_for_select(FloatPlan::LOCATIONS, @float_plan.arrival_location)
-    .large-4.columns
-      %label
         Boat Number
         =f.select :boat_number, options_for_select(FloatPlan::BOAT_NUMBERS, @float_plan.boat_number)
   .row
@@ -74,6 +66,11 @@
       %label
         Direction of Sail
         =f.text_field :direction_of_sail
+  .row
+    .large-12.columns
+      %label
+        Additional Notes
+        =f.text_field :notes
   .row
     .large-12.columns
       Participants

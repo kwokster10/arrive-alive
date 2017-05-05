@@ -1,10 +1,10 @@
 .row
-  - if @float_plan.started?
-    .large-6.small-6.columns
-      =state_button_helper(@float_plan, 'Help!')
   - if @float_plan.started? || @float_plan.distressed?
     .large-6.small-6.columns
       =state_button_helper(@float_plan, 'Arrived')
+  - if @float_plan.started?
+    .large-6.small-6.columns
+      =state_button_helper(@float_plan, 'Help!')
 
 %table.view-table
   %thead
@@ -18,7 +18,7 @@
       %td
         =@float_plan.updated_at.strftime('%l:%M %p')
     %tr
-      %td State
+      %td Sailing Status
       %td{class: "#{@float_plan.state} text-center"}
         =@float_plan.state
     %tr
@@ -50,34 +50,30 @@
       %td
         =@float_plan.boat_number
     %tr
-      %td Direction of Sail
-      %td
-        =@float_plan.direction_of_sail
-    %tr
-      %td Start Location
-      %td
-        =@float_plan.start_location
-    %tr
-      %td End Location
-      %td
-        =@float_plan.arrival_location
-    %tr
       %td Current
       %td
         =@float_plan.current
     %tr
-      %td Other
+      %td Direction of Sail
       %td
-        %ul
-          %li
-            =yes_or_no(@float_plan, 'had_checked_weather')
-          %li
-            =yes_or_no(@float_plan, 'had_vhf_radio')
-          %li
-            =yes_or_no(@float_plan, 'had_three_flares')
-          %li
-            =yes_or_no(@float_plan, 'had_throw_rope')
+        =@float_plan.direction_of_sail
+    %tr
+      %td Notes
+      %td
+        =@float_plan.notes
     - if current_user.admin?
+      %tr
+        %td Other
+        %td
+          %ul
+            %li
+              =yes_or_no(@float_plan, 'had_checked_weather')
+            %li
+              =yes_or_no(@float_plan, 'had_vhf_radio')
+            %li
+              =yes_or_no(@float_plan, 'had_three_flares')
+            %li
+              =yes_or_no(@float_plan, 'had_throw_rope')
       %tr
         %td Edit
         %td

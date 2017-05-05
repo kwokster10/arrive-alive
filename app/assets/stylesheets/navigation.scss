@@ -1,36 +1,70 @@
-.menu.top-bar {
-  background-color: black;
+@import "settings";
+
+.title-bar {
+  background: #1e3f5a;
+  line-height: 35px;
 
   img {
-    width: 85px;
-    margin: -15px;
-    margin-left: 15px;
+    height: 35px;
+  }
+}
+
+#nav-menu {
+  background: #1e3f5a;
+
+  @include breakpoint(small only) {
+    height: 135px;
+
+    &.admin {
+      height: 170px;
+    }
   }
 
-  .top-bar-section {
-    display: inline-flex;
-    float: right;
-    margin-top: 20px;
+  .top-bar-left {
+    background-color: #1e3f5a;
 
-    @media screen and (max-width: 545px) {
-      margin-top: 20px;
-      margin-bottom: 10px;
+    @include breakpoint(small only) {
+      .menu {
+         display: none;
+      }
     }
 
-    .right {
-      padding-right: 20px;
 
-      @media screen and (max-width: 768px) {
-        margin-top: 10px;
+    img {
+      height: 50px;
+    }
+  }
+
+  .top-bar-right {
+    height: 50px;
+
+    @include breakpoint(small only) {
+      height: 0;
+      text-align: center;
+      display: inline-grid
+    }
+
+    ul.menu {
+      height: 100%;
+      display: inline-table;
+
+      @include breakpoint(small only) {
+        text-align: center;
+        display: inline-grid;
       }
 
-      a.active {
-        padding: 5px 10px;
+      a {
+        color: #fff;
+        font-weight: 900;
 
-        @media screen and (min-width: 768px) {
-          background-color: lighten(#2199E8, 30%);
+        &.active {
+          border: 1px white solid;
         }
       }
     }
+  }
+
+  ul.menu {
+    background-color: #1e3f5a;
   }
 }
