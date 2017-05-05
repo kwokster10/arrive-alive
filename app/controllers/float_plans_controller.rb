@@ -19,7 +19,7 @@ class FloatPlansController < ApplicationController
   end
 
   def create
-    @float_plan = FloatPlan.new()
+    @float_plan = FloatPlan.new
     @float_plan.assign_attributes(formatted_permitted_params)
     if @float_plan.save
       redirect_to float_plan_path @float_plan
@@ -56,10 +56,8 @@ class FloatPlansController < ApplicationController
 
   def build_new_float_plan
     float_plan = FloatPlan.new(
-      start_time: Time.now,
-      arrival_time: Time.now + 4.hours,
       state: 0,
-      name: current_user.name + DateTime.now.strftime('%m/%d/%Y'),
+      name: "#{current_user.name} #{DateTime.now.strftime('%-m/%-d/%Y %l%p')}",
       email: current_user.email,
       phone_number: current_user.phone_number,
       user_id: current_user.id,

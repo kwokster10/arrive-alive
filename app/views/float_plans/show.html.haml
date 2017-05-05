@@ -10,17 +10,18 @@
   %thead
   %tbody
     %tr
-      %td Created On
-      %td
-        =@float_plan.created_at.strftime('%m/%d/%y')
-    %tr
-      %td Last Updated
-      %td
-        =@float_plan.updated_at.strftime('%l:%M %p')
-    %tr
       %td Sailing Status
-      %td{class: "#{@float_plan.state} text-center"}
+      %td{class: "#{@float_plan.state} text-center bold"}
         =@float_plan.state
+    - if current_user.admin?
+      %tr
+        %td Created On
+        %td
+          =@float_plan.created_at.strftime('%m/%d/%y')
+      %tr
+        %td Last Updated
+        %td
+          =@float_plan.updated_at.strftime('%l:%M %p')
     %tr
       %td Start Time
       %td
@@ -74,10 +75,11 @@
               =yes_or_no(@float_plan, 'had_three_flares')
             %li
               =yes_or_no(@float_plan, 'had_throw_rope')
-      %tr
-        %td Edit
-        %td
-          =link_to 'Edit', edit_float_plan_path(@float_plan), class: 'hollow button'
+      - if @float_plan.started?
+        %tr
+          %td Edit
+          %td
+            =link_to 'Edit', edit_float_plan_path(@float_plan), class: 'hollow button'
 
 - if @float_plan.started?
   =state_button_helper(@float_plan, 'Cancel')

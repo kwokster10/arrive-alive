@@ -29,7 +29,7 @@ en:
     create_confirmation: "Once submitted, float plan can NOT be edited.\r\rAre you sure you're ready to submit?"
     index: "All Float Plans"
     edit: "Edit %{float_plan_name}"
-    show: "%{float_plan_name}"
+    show: "Float Plan Name: %{float_plan_name}"
     success: "Please report any damage or any missing gear to %{<%= ENV['ADMIN1_NAME'] %>}. Use the Boat # as the subject for the email to %{<%= ENV['ADMIN1_EMAIL'] %>}. You can send photos as attachments and additional information in the body.\r\r Thank you for helping us keep the fleet ship shape!"
     secondary: "Are you sure you would like to cancel this float plan?"
     alert: "Contact the U.S. Coast Guard on VHF Channel 16 immediately if this is a life-threatening emergency.\r\rOtherwise, contact the club on VHF Channel 69. If you cannot reach us on the radio, call %{<%= ENV['ADMIN1_NAME'] %>} at %{<%= ENV['ADMIN1_PHONE'] %>}, or %{<%= ENV['ADMIN2_NAME'] %>} at %{<%= ENV['ADMIN2_PHONE'] %>}."
