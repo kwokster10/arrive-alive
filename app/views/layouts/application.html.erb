@@ -33,23 +33,25 @@
     <% end %>
 
     <div class="<%= current_page?(new_user_session_path) ? 'sign-in-page row' : 'row' %> main-container">
-      <% if @title %>
-        <h3><%= @title %></h3>
-      <% end %>
+      <div class="large-12 small-12 columns">
+        <% if @title %>
+          <h3><%= @title %></h3>
+        <% end %>
 
-      <% if notice %>
-          <div class="callout primary">
-            <%= notice %>
-          </div>
-      <% end %>
+        <% if notice %>
+            <div class="callout primary">
+              <%= notice %>
+            </div>
+        <% end %>
 
-      <% if alert %>
-          <div class="callout warning">
-            <%= alert %>
-          </div>
-      <% end %>
+        <% if alert %>
+            <div class="callout warning">
+              <%= alert %>
+            </div>
+        <% end %>
 
-      <%= yield %>
+        <%= yield %>
+      </div>
     </div>
   </body>
 </html>
