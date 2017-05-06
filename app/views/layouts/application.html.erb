@@ -32,8 +32,11 @@
       <%= render 'layouts/navigation' %>
     <% end %>
 
-    <div class="<%= current_page?(new_user_session_path) ? 'sign-in-page' : 'row' %> main-container">
-      <h3><%= @title || '' %></h3>
+    <div class="<%= current_page?(new_user_session_path) ? 'sign-in-page row' : 'row' %> main-container">
+      <% if @title %>
+        <h3><%= @title %></h3>
+      <% end %>
+
       <% if notice %>
           <div class="callout primary">
             <%= notice %>

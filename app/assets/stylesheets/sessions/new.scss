@@ -1,17 +1,26 @@
 .sign-in-body {
-  background-color: #edab0d;
-  //background-image: linear-gradient(to right, #a61f0e, #edab0d 10%);
+  background: image-url("overhead_boat.jpg") 65% 45%;
 
   .sign-in-page {
-    margin-top: 50px;
+    padding-top: 50px;
 
-    .content {
-      margin: auto;
-      width: 350px;
+    .columns {
+      background-color: rgba(237, 171, 13, .9);
+      padding: 15px;
+      margin-top: 25px;
+      margin-bottom: 25px;
+
+      @media screen and (max-width: 768px) {
+        margin-top: 0;
+        margin-bottom: 0;
+      }
 
       .top-image {
-        width: 200px;
-        margin: auto;
+        text-align: center;
+
+        img {
+          max-width: 200px;
+        }
       }
     }
   }

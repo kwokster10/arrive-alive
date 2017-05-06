@@ -1,17 +1,18 @@
-.arrived, .distressed {
-  color: white;
+.status {
+  border-width: 2px;
+  border-style: solid;
 }
 .arrived {
-  background-color: #43AC6A;
+  border-color: #47ba83;
 }
 .started {
-  background-color: #A0D3E8;
+  border-color: #276da6;
 }
 .distressed {
-  background-color: #F04124;
+  border-color: #a61f0e;
 }
 .cancelled {
-  background-color: #E7E7E7;
+  border-color: #e6e6e6;
 }
 .center {
   text-align: center;

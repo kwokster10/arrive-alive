@@ -5,9 +5,9 @@ module FloatPlanHelper
 
   def state_button_helper(float_plan, text)
     state_map = {
-      'Arrived' => [1, 'success'],
-      'Cancel' => [2, 'secondary'],
-      'Help!' => [3, 'alert']
+      'Mark as Arrived' => [1, 'success'],
+      'Cancel Trip' => [2, 'secondary'],
+      'Call for Help!' => [3, 'alert']
     }
 
     capture do

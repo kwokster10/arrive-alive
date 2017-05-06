@@ -1,85 +1,90 @@
 .row
-  - if @float_plan.started? || @float_plan.distressed?
-    .large-6.small-6.columns
-      =state_button_helper(@float_plan, 'Arrived')
-  - if @float_plan.started?
-    .large-6.small-6.columns
-      =state_button_helper(@float_plan, 'Help!')
-
-%table.view-table
-  %thead
-  %tbody
-    %tr
-      %td Sailing Status
-      %td{class: "#{@float_plan.state} text-center bold"}
-        =@float_plan.state
-    - if current_user.admin?
-      %tr
-        %td Created On
-        %td
-          =@float_plan.created_at.strftime('%m/%d/%y')
-      %tr
-        %td Last Updated
-        %td
-          =@float_plan.updated_at.strftime('%l:%M %p')
-    %tr
-      %td Start Time
-      %td
-        =@float_plan.start_time.strftime('%l:%M %p')
-    %tr
-      %td Arrival Time
-      %td
-        =@float_plan.arrival_time.strftime('%l:%M %p')
-    %tr
-      %td Participants
-      %td
-        %ol
-          -@float_plan.participants.try(:each) do |p|
-            %li
-              ="#{p['name']} - "
-              =p['is_member'] ? 'Member' : 'Guest'
-    %tr
-      %td Contact Info
-      %td
-        %ul
-          %li
-            =@float_plan.email
-          %li
-            =@float_plan.phone_number
-    %tr
-      %td Boat #
-      %td
-        =@float_plan.boat_number
-    %tr
-      %td Current
-      %td
-        =@float_plan.current
-    %tr
-      %td Direction of Sail
-      %td
-        =@float_plan.direction_of_sail
-    %tr
-      %td Notes
-      %td
-        =@float_plan.notes
-    - if current_user.admin?
-      %tr
-        %td Other
-        %td
-          %ul
-            %li
-              =yes_or_no(@float_plan, 'had_checked_weather')
-            %li
-              =yes_or_no(@float_plan, 'had_vhf_radio')
-            %li
-              =yes_or_no(@float_plan, 'had_three_flares')
-            %li
-              =yes_or_no(@float_plan, 'had_throw_rope')
+  .large-12.small-12.columns.cta-wrapper
+    %p How can I help you?
+    .row
+      - if @float_plan.started? || @float_plan.distressed?
+        .large-12.small-12.columns
+          =state_button_helper(@float_plan, 'Mark as Arrived')
       - if @float_plan.started?
-        %tr
-          %td Edit
-          %td
-            =link_to 'Edit', edit_float_plan_path(@float_plan), class: 'hollow button'
+        .large-6.small-6.columns
+          =state_button_helper(@float_plan, 'Call for Help!')
+      - if @float_plan.started?
+        .large-6.small-6.columns
+          =state_button_helper(@float_plan, 'Cancel Trip')
 
-- if @float_plan.started?
-  =state_button_helper(@float_plan, 'Cancel')
+.row
+  .large-12.small-12.columns
+    %table.view-table
+      %thead
+      %tbody
+        %tr.status{class: "#{@float_plan.state}"}
+          %td Current Sailing Status
+          %td.text-center.bold
+            =@float_plan.state
+        - if current_user.admin?
+          %tr
+            %td Created On
+            %td
+              =@float_plan.created_at.strftime('%m/%d/%y')
+          %tr
+            %td Last Updated
+            %td
+              =@float_plan.updated_at.strftime('%l:%M %p')
+        %tr
+          %td Start Time
+          %td
+            =@float_plan.start_time.strftime('%l:%M %p')
+        %tr
+          %td Arrival Time
+          %td
+            =@float_plan.arrival_time.strftime('%l:%M %p')
+        %tr
+          %td Participants
+          %td
+            %ol
+              -@float_plan.participants.try(:each) do |p|
+                %li
+                  ="#{p['name']} - "
+                  =p['is_member'] ? 'Member' : 'Guest'
+        %tr
+          %td Contact Info
+          %td
+            %ul
+              %li
+                =@float_plan.email
+              %li
+                =@float_plan.phone_number
+        %tr
+          %td Boat #
+          %td
+            =@float_plan.boat_number
+        %tr
+          %td Current
+          %td
+            =@float_plan.current
+        %tr
+          %td Direction of Sail
+          %td
+            =@float_plan.direction_of_sail
+        %tr
+          %td Notes
+          %td
+            =@float_plan.notes
+        - if current_user.admin?
+          %tr
+            %td Other
+            %td
+              %ul
+                %li
+                  =yes_or_no(@float_plan, 'had_checked_weather')
+                %li
+                  =yes_or_no(@float_plan, 'had_vhf_radio')
+                %li
+                  =yes_or_no(@float_plan, 'had_three_flares')
+                %li
+                  =yes_or_no(@float_plan, 'had_throw_rope')
+          - if @float_plan.started?
+            %tr
+              %td Edit
+              %td
+                =link_to 'Edit', edit_float_plan_path(@float_plan), class: 'hollow button'
