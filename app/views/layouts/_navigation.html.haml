@@ -3,19 +3,20 @@
     =image_tag('logo.png')
   .title-bar-right
     %button.menu-icon{ data: {toggle: ''}, type: 'button' }
-#nav-menu.top-bar{class: "#{'admin' if current_user.admin?}"}
+#nav-menu.top-bar{class: "#{'admin' if current_user && current_user.admin?}"}
   .top-bar-left
     %ul.menu{ data: { hide_for: 'medium'}}
       %li
         =image_tag('logo.png')
-  .top-bar-right
-    %ul.menu.dropdown.vertical.medium-horizontal
-      -if current_user.admin?
+  - if current_user
+    .top-bar-right
+      %ul.menu.dropdown.vertical.medium-horizontal
+        -if current_user.admin?
+          %li
+            =link_to 'Users', users_path, class: "#{'active' if current_page?(users_path)}"
         %li
-          =link_to 'Users', users_path, class: "#{'active' if current_page?(users_path)}"
-      %li
-        =link_to 'Float Plans', float_plans_path, class: "#{'active' if current_page?(float_plans_path)}"
-      %li
-        =link_to 'My Profile', user_path(current_user.id), class: "#{'active' if current_page?(user_path(current_user.id))}"
-      %li
-        =link_to 'Sign Out', destroy_user_session_path, method: :delete
+          =link_to 'Float Plans', float_plans_path, class: "#{'active' if current_page?(float_plans_path)}"
+        %li
+          =link_to 'My Profile', user_path(current_user.id), class: "#{'active' if current_page?(user_path(current_user.id))}"
+        %li
+          =link_to 'Sign Out', destroy_user_session_path, method: :delete
