@@ -37,7 +37,7 @@ class FloatPlansController < ApplicationController
   def update
     old_state = @float_plan.state
     if @float_plan.update_attributes(formatted_permitted_params)
-      notify_admin(old_state, @float_plan).deliver_later
+      notify_admin(old_state, @float_plan).deliver
 
       redirect_to float_plan_path @float_plan
     else
