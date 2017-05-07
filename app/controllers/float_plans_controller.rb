@@ -82,7 +82,7 @@ class FloatPlansController < ApplicationController
 
   def query_float_plan_attributes
     if params[:query].present? && (old_float_plan = FloatPlan.find(params[:query]))
-      old_float_plan ? old_float_plan.attributes.extract!('email', 'phone_number', 'start_location', 'arrival_location', 'participants', 'user_id') : {}
+      old_float_plan ? old_float_plan.attributes.extract!('email', 'phone_number', 'participants', 'user_id') : {}
     end
   end
 

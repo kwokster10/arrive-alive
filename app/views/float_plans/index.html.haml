@@ -15,7 +15,6 @@
           %th Boat #
           %th Participants
           %th State
-          %th.hide-for-small-only Last Updated
           %th
           -if current_user.admin?
             %th.hide-for-small-only
@@ -32,10 +31,8 @@
                   %li
                     ="#{p['name']} - "
                     =p['is_member'] ? 'Member' : 'Guest'
-            %td{class: "#{fp.state} text-center"}
+            %td{class: "#{fp.state} text-center left-border"}
               =fp.state
-            %td.hide-for-small-only
-              =fp.updated_at.strftime('%l:%M %p')
             %td.center
               =link_to 'View', float_plan_path(fp), class: 'hollow button'
             -if current_user.admin?

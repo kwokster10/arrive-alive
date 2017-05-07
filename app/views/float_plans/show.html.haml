@@ -1,16 +1,17 @@
-.row
-  .large-12.small-12.columns.cta-wrapper
-    %p How can I help you?
-    .row
-      - if @float_plan.started? || @float_plan.distressed?
-        .large-12.small-12.columns
-          =state_button_helper(@float_plan, 'Mark as Arrived')
-      - if @float_plan.started?
-        .large-6.small-6.columns
-          =state_button_helper(@float_plan, 'Call for Help!')
-      - if @float_plan.started?
-        .large-6.small-6.columns
-          =state_button_helper(@float_plan, 'Cancel Trip')
+- unless @float_plan.arrived?
+  .row
+    .large-12.small-12.columns.cta-wrapper
+      %p How can I help you?
+      .row
+        - if @float_plan.started? || @float_plan.distressed?
+          .large-12.small-12.columns
+            =state_button_helper(@float_plan, 'Mark as Arrived')
+        - if @float_plan.started?
+          .large-6.small-6.columns
+            =state_button_helper(@float_plan, 'Call for Help!')
+        - if @float_plan.started?
+          .large-6.small-6.columns
+            =state_button_helper(@float_plan, 'Cancel Trip')
 
 .row
   .large-12.small-12.columns
