@@ -35,6 +35,9 @@ gem 'pundit'
 # Adding Haml temple engine. Read more: https://github.com/haml/haml
 gem 'haml', '~> 4.0.5'
 
+# setting logger to standard out and serves assets
+gem 'rails_12factor', group: :production
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
