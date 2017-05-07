@@ -78,7 +78,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # Sets default URL options for Devise
-  config.action_mailer.default_url_options = { host: 'arrive-alive.herokuapp.com' }
+  config.action_mailer.default_url_options = { host: 'arrive-alive.herokuapp.com', :protocol => 'http' }
 
   # Sets Mailer config for Devise
   config.action_mailer.delivery_method = :smtp
