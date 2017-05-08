@@ -25,7 +25,7 @@ en:
   phone_number_error: "must be in ###-###-#### or ########## format"
   float_plans:
     new: "Create a Float Plan"
-    new_label: "Create new from existing float plan (or leave blank to create from scratch):"
+    new_label: "Choose an existing float plan from list below to pre-fill information or leave blank to create one from scratch:"
     create_confirmation: "Once submitted, float plan can NOT be edited.\r\rAre you sure you're ready to submit?"
     index: ""
     edit: "Edit %{float_plan_name}"
@@ -42,7 +42,7 @@ en:
       participants: "must have at least two club members on the boat"
   users:
     edit: "Editing %{user_name}'s Profile"
-    index: "All Skippers"
+    index: ""
     show: "%{user_name}'s Profile"
     delete:
       confirmation: "Are you sure you want to delete %{user_name}"
