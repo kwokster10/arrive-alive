@@ -46,4 +46,5 @@ en:
     show: "%{user_name}'s Profile"
     delete:
       confirmation: "Are you sure you want to delete %{user_name}"
+    destroy: "%{user_email} was successfully deleted."
     to_admin: "Are you sure you want to give %{user_name} admin rights?"

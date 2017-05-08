@@ -10,5 +10,5 @@ Rails.application.routes.draw do
   end
 
   resources :float_plans
-  resources :users, except: [:create, :new, :destroy]
+  resources :users, except: [:create, :new]
 end

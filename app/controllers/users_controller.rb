@@ -25,6 +25,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    @user.destroy
+    flash[:notice] = t('users.destroy', user_email: @user.email)
+    redirect_to action: :index
+  end
+
   private
 
   def assign_user

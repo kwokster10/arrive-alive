@@ -28,6 +28,10 @@ class UserPolicy < ApplicationPolicy
     admin_or_owner?
   end
 
+  def destroy?
+    user.admin?
+  end
+
   def all_attributes_except_admin
     [:name, :email, :phone_number, :password, :password_confirmation]
   end
