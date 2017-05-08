@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   has_many :float_plans, dependent: :destroy
 
   validates :phone_number,
-            format: { with: /\d{3}-\d{3}-\d{4}/, message: I18n.t('phone_number_error') },
+            format: { with: /\d{3}-?\d{3}-?\d{4}/, message: I18n.t('phone_number_error') },
             allow_blank: true
 
   def owner_of?(record)
