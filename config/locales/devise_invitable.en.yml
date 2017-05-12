@@ -10,16 +10,16 @@ en:
       no_invitations_remaining: "No invitations remaining"
       invitation_removed: "Your invitation was removed."
       new:
-        header: "Send invitation"
-        submit_button: "Send an invitation"
+        header: "Who would you like invite?"
+        submit_button: "Send"
       edit:
-        header: "Set your password"
-        submit_button: "Set my password"
+        header: "Welcome! Set up your account:"
+        submit_button: "Finish setting up"
     mailer:
       invitation_instructions:
         subject: "Invitation instructions"
         hello: "Hello %{email}"
-        someone_invited_you: "Someone has invited you to use Arrive Alive <%{url}>. You can accept it by clicking on the link below and setting up your profile."
+        someone_invited_you: "Someone has invited you to use Arrive Alive <%{url}>. You can accept it by clicking on the link below and setting up your account."
         accept: "Accept invitation"
         accept_until: "This invitation will be due in %{due_date}."
         ignore: "If you don't want to accept the invitation, please ignore this email."

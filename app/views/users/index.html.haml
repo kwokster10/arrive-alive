@@ -7,7 +7,6 @@
       %th Name
       %th Phone Number
       %th.hide-for-small-only Email
-      %th.hide-for-small-only Invitations Count
       %th.hide-for-small-only Invitation Accepted On
       %th
       %th.hide-for-small-only
@@ -23,8 +22,6 @@
           =u.phone_number
         %td.hide-for-small-only
           =u.email
-        %td.hide-for-small-only
-          =u.invitations_count
         %td.hide-for-small-only
           =u.invitation_accepted_at.try(:strftime, '%m/%d/%y')
         %td.center

@@ -25,8 +25,15 @@
     %tr
       %td
       %td
-        =link_to 'Change Password', edit_user_registration_path, class: 'hollow button'
-    %tr
-      %td
-      %td
         =link_to 'Edit', edit_user_path(@user), class: 'hollow button'
+    - if current_user == @user
+      %tr
+        %td
+        %td
+          =link_to 'Change Password', edit_user_registration_path, class: 'hollow button'
+      - if current_user.admin?
+        %td
+          =link_to 'Delete', @user,
+              data: {confirm: t('users.delete.confirmation', user_name: @user.name )},
+              method: :delete,
+              class: 'hollow button alert'
