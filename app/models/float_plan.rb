@@ -7,7 +7,7 @@ class FloatPlan < ActiveRecord::Base
   BOAT_NUMBERS = (1..12).map{|i| i}
 
   validates :current, inclusion: {in: %w(ebb flood), message: I18n.t('float_plans.errors.current')}
-  validates :phone_number, format: { with: /\d{3}-\d{3}-\d{4}/, message: I18n.t('phone_number_error') }
+  validates :phone_number, format: { with: /\d{3}-?\d{3}-?\d{4}/, message: I18n.t('phone_number_error') }
   validate :more_than_two_members, on: :create
 
   before_validation :format_participants
