@@ -25,7 +25,7 @@ class FloatPlan < ActiveRecord::Base
   def format_participants
     participants.each do |obj|
       obj['name'] = obj['name'].strip.downcase.titleize if obj['name']
-      obj['is_member'] = obj['is_member'] == 'true'
+      obj['is_member'] = obj['is_member'] == 'true' || obj['is_member']
     end
   end
 end
