@@ -1,4 +1,6 @@
 class FloatPlan < ActiveRecord::Base
+  default_scope { order(created_at: :desc) }
+
   belongs_to :user
 
   enum state: {started: 0, arrived: 1, cancelled: 2, distressed: 3}

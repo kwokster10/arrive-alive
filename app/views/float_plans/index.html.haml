@@ -6,35 +6,9 @@
     .small-4.large-4.columns
       =submit_tag 'Create', class: 'button'
 -#TODO: Add tabs to see started/distressed in one tab, and all in another
-.row
-  .large-12.small-12.columns
-    %table
-      %thead
-        %tr
-          %th.hide-for-small-only Created On
-          %th Boat #
-          %th Participants
-          %th State
-          %th
-          -if current_user.admin?
-            %th.hide-for-small-only
-      %tbody
-        -@float_plans.each do |fp|
-          %tr
-            %td.hide-for-small-only
-              =fp.created_at.strftime('%m/%d/%y')
-            %td
-              =fp.boat_number
-            %td
-              %ol
-                -fp.participants.try(:each) do |p|
-                  %li
-                    ="#{p['name']} - "
-                    =p['is_member'] ? 'Member' : 'Guest'
-            %td{class: "#{fp.state} text-center left-border"}
-              =fp.state
-            %td.center
-              =link_to 'View', float_plan_path(fp), class: 'hollow button'
-            -if current_user.admin?
-              %td.hide-for-small-only.center
-                =link_to 'Edit', edit_float_plan_path(fp), class: 'hollow button'
+- date_format = current_user.admin? ? '%m/%d/%y' : "%B '%y"
+- @float_plans.group_by{|f| f.created_at.strftime(date_format)}.each do |key, value|
+  %h5
+    =key
+  .row.small-up-1.medium-up-2.large-up-3
+    = render collection: value, partial: 'float_plan'

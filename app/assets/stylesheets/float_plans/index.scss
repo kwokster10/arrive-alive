@@ -2,38 +2,46 @@
   border-width: 3px;
   border-style: solid;
 }
-.left-border {
-  border-left: 6px solid;
+
+.card-divider {
+  color: white;
 
   &.arrived {
-    border-color: #47ba83;
-    background-color: lighten(#47ba83, 30%);
+    background-color: #47ba83;
   }
+
   &.started {
-    border-color: #276da6;
-    background-color: lighten(#276da6, 30%);
+    background-color: #276da6;
+
   }
+
   &.distressed {
-    border-color: #a61f0e;
-    background-color: lighten(#a61f0e, 30%);
+    background-color: #a61f0e;
   }
+
   &.cancelled {
-    border-color: #e6e6e6;
-    background-color: lighten(#e6e6e6, 30%);
+    background-color: #e6e6e6;
+    color: black;
   }
+
 }
+
 .arrived {
   border-color: #47ba83;
 }
+
 .started {
   border-color: #276da6;
 }
+
 .distressed {
   border-color: #a61f0e;
 }
+
 .cancelled {
   border-color: #e6e6e6;
 }
+
 .center {
   text-align: center;
 }

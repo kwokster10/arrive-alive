@@ -1,0 +1,20 @@
+.column
+  %a{href: float_plan_path(float_plan)}
+    .card
+      .card-divider{class: float_plan.state}
+        =image_tag("flag_#{float_plan.state}.png")
+        =float_plan.name
+      .card-section
+        %p
+          %b Boat #:
+          %span
+            =float_plan.boat_number
+        %p
+          %b Start - End:
+          %span
+            =float_plan.start_time.strftime('%-l:%M %p')
+            -
+            =float_plan.start_time.strftime('%-l:%M %p')
+      -if current_user.admin?
+        .card-divider
+          =link_to 'Edit', edit_float_plan_path(float_plan), class: 'hollow button'

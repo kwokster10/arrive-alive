@@ -25,5 +25,8 @@ module ArriveAlive
 
     # Setting default time zone
     config.time_zone = 'Eastern Time (US & Canada)'
+
+    # Setting default email from address
+    config.action_mailer.default_options = { from: "#{ENV['AA_GMAIL_USERNAME']}@gmail.com" }
   end
 end
