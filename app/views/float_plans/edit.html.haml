@@ -1,1 +1,4 @@
-=render 'full_form'
+- if @float_plan.arrived?
+  =render 'notes'
+- else
+  =render 'full_form'

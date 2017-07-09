@@ -11,6 +11,9 @@ Rails.application.routes.draw do
     put 'users' => 'devise/registrations#update', :as => 'user_registration'
   end
 
-  resources :float_plans
+  resources :float_plans do
+    put :send_note, on: :member
+  end
+
   resources :users, except: [:create, :new]
 end

@@ -1,11 +1,20 @@
-=form_for @float_plan do |f|
-  .row
-    .large-12.columns
-      %label
-        Subject
-        =text_field_tag :boat_number, f.boat_number
+.row
+  .large-12.columns
+    %p
+      %b Subject:
+      Boat #
+      = @float_plan.boat_number
+=form_for @float_plan, url: send_note_float_plan_path(@float_plan), method: :put, html: {multipart: true} do |f|
   .row
     .large-12.columns
       %label
         Body
-        =f.text_field :notes, placeholder: 'What damage or missing gear would you like to report?'
+        =f.text_area :notes, placeholder: 'What damage or missing gear would you like to report?'
+  .row
+    .large-12.columns
+      %label
+        Attach a Photo
+        =file_field_tag 'photo', accept: 'image/*'
+  .row
+    .large-12.columns
+      =f.submit 'Send', class: 'button'

@@ -29,8 +29,9 @@ en:
     create_confirmation: "Once submitted, float plan can NOT be edited.\r\rAre you sure you're ready to submit?"
     index: ""
     edit: "Edit %{float_plan_name}"
+    notes: "Send Notes From '%{float_plan_name}' Trip"
     show: "Float Plan Name: %{float_plan_name}"
-    success: "Please report any damage or any missing gear to Jim Moore. Use the Boat # as the subject for the email to jhmoor@gmail.com. You can send photos as attachments and additional information in the body.\r\r Thank you for helping us keep the fleet ship shape!"
+    success: "Please use the next page to report any damage or any missing gear to Jim Moore. The Boat # will be used as the subject for the email to jhmoor@gmail.com. You can send a photo as an attachment and additional information in the body.\r\r Thank you for helping us keep the fleet ship shape!"
     secondary: "Are you sure you would like to cancel this float plan?"
     alert: "Contact the U.S. Coast Guard on VHF Channel 16 immediately if this is a life-threatening emergency.\r\rOtherwise, contact the club on VHF Channel 69. If you cannot reach us on the radio, call Jim at 475-441-3636."
     info:

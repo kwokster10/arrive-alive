@@ -8,4 +8,11 @@ class FloatPlanMailer < ActionMailer::Base
 
     mail(subject: "#{@float_plan.name} - #{@float_plan.state}")
   end
+
+  def notify_damage(float_plan, photo)
+    @float_plan = float_plan
+    attachments["#{photo.original_filename}"] = File.read(photo.path)
+
+    mail(subject: "Boat # #{@float_plan.boat_number}")
+  end
 end

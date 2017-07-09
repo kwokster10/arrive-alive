@@ -25,7 +25,11 @@ class FloatPlanPolicy < ApplicationPolicy
   end
 
   def edit?
-    user.admin?
+    user.admin? || (user.owner_of?(record) && record.arrived? && record.notes.blank?)
+  end
+
+  def send_note?
+    user.owner_of?(record)
   end
 
   def all_attributes_except_notes
@@ -42,5 +46,9 @@ class FloatPlanPolicy < ApplicationPolicy
     elsif user.owner_of?(record)
       [:state, :notes]
     end
+  end
+
+  def permitted_attributes_for_send_note
+    [:notes]
   end
 end

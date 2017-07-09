@@ -67,11 +67,11 @@
           %td Direction of Sail
           %td
             =@float_plan.direction_of_sail
-        %tr
-          %td Notes
-          %td
-            =@float_plan.notes
         - if current_user.admin?
+          %tr
+            %td Notes
+            %td
+              =@float_plan.notes
           %tr
             %td Other
             %td

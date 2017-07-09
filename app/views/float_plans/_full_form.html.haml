@@ -67,11 +67,6 @@
         =f.text_field :direction_of_sail
   .row
     .large-12.columns
-      %label
-        Additional Notes
-        =f.text_field :notes
-  .row
-    .large-12.columns
       Participants
       (maximum of 6 with 1 required club member and of course, you, the skipper)
       =@float_plan.participants.blank? ? (render 'new_participants', f: f, count: 6) : (render 'existing_participants', float_plan: @float_plan, f: f)

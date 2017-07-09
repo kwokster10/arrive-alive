@@ -1,6 +1,7 @@
 class FloatPlansController < ApplicationController
   before_action :authenticate_user!
   before_action :assign_float_plan, only: [:show, :edit, :update]
+  before_action :load_float_plan_and_user, only: :send_note
 
   def index
     @title = t('float_plans.index')
@@ -31,15 +32,27 @@ class FloatPlansController < ApplicationController
   end
 
   def edit
-    @title = t('float_plans.edit', float_plan_name: @float_plan.name)
+    @title = t("float_plans.#{current_user.admin? ?  'edit' : 'notes'}", float_plan_name: @float_plan.name)
+  end
+
+  def send_note
+    @float_plan.update_attributes(permitted_attributes(@float_plan))
+
+    FloatPlanMailer.notify_damage(@float_plan, params[:photo]).deliver_now
+
+    redirect_to float_plan_path @float_plan
   end
 
   def update
     old_state = @float_plan.state
     if @float_plan.update_attributes(formatted_permitted_params)
-      notify_admin(old_state, @float_plan).deliver if old_state != @float_plan.state
+      notify_admin(old_state, @float_plan) if old_state != @float_plan.state
 
-      redirect_to float_plan_path @float_plan
+      if @float_plan.arrived? && !current_user.admin?
+        redirect_to edit_float_plan_path @float_plan
+      else
+        redirect_to float_plan_path @float_plan
+      end
     else
       @title = t('float_plans.edit', float_plan_name: @float_plan.name)
       flash.now[:alert] = @float_plan.errors.full_messages.join('. ')
@@ -51,6 +64,11 @@ class FloatPlansController < ApplicationController
 
   def assign_float_plan
     @float_plan = FloatPlan.find(params[:id])
+    authorize @float_plan
+  end
+
+  def load_float_plan_and_user
+    @float_plan = FloatPlan.includes(:user).find(params[:id])
     authorize @float_plan
   end
 
@@ -99,6 +117,6 @@ class FloatPlansController < ApplicationController
   end
 
   def notify_admin(old_state, float_plan)
-    FloatPlanMailer.notify_state_change(old_state, float_plan)
+    FloatPlanMailer.notify_state_change(old_state, float_plan).deliver_now
   end
 end
