@@ -75,7 +75,7 @@ class FloatPlansController < ApplicationController
   def build_new_float_plan
     float_plan = FloatPlan.new(
       state: 0,
-      name: "#{current_user.name} #{DateTime.now.strftime('%-m/%-d/%Y %l%p')}",
+      name: "#{current_user.name} #{DateTime.now.in_time_zone.strftime('%-m/%-d/%Y %l%p')}",
       email: current_user.email,
       phone_number: current_user.phone_number,
       user_id: current_user.id,
